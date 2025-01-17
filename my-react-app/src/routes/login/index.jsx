@@ -37,7 +37,6 @@ export const Login = () => {
             </header>
             <main className={ styles.main_login}>
                 <h2>Login</h2>
-                <div>
                     <form onSubmit={handleSubmit(submit)}>
                         {inputsList.map(e =>{
                             return(
@@ -51,7 +50,6 @@ export const Login = () => {
                     </form>
                     <span>Ainda não possui uma conta?</span>
                     <button onClick={() => {navigate("/register")}}>Cadastre-se</button>
-                </div>
             </main>
         </>
     )
