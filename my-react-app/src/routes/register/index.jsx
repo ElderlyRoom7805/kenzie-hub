@@ -1,15 +1,15 @@
-import { HeaderComponent } from "../../components/header";
+
 import { useForm } from "react-hook-form";
 import { EveryRotes} from "../../context";
 import { useContext } from "react";
 import { api } from "../../server/api";
 import { useNavigate } from "react-router-dom";
 import styles from "./index.module.scss";
+import { toast } from "react-toastify";
 
 export const Register = () => {
     const { userRegister } = useContext(EveryRotes);
-    const { register, handleSubmit, formState: { errors }, watch } = useForm()
-    const samePassword = watch("password");
+    const { register, handleSubmit } = useForm()
     const navigate = useNavigate();
 
     const inputs = [{
@@ -38,7 +38,7 @@ export const Register = () => {
         label: "Confirmar Senha",
         placeHolder: "Digite novamente sua senha",
         type: "password",
-        form: "password",
+        form: "password2",
     },
     {
         id:5,
@@ -57,7 +57,11 @@ export const Register = () => {
     ]
 
     const submit = async (formData) => {
+        if(formData.password == formData.password2){
             await userRegister(formData);
+        } else {
+            toast.error("As senhas não correspondem!");
+        }
     }
     const returnButton = () =>{
         navigate("/")

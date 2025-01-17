@@ -1,35 +1,43 @@
 import { useContext } from "react";
-import { EveryRotes, useContextFast } from "../../context"
-import { HeaderComponent } from "../../components/header";
+import { EveryRotes } from "../../context"
 import styles from "./index.module.scss";
 import { Outlet } from "react-router-dom";
-
+import { ModalCreateTech } from "../../components/createTeachModal/index.jsx"
+import { ModalTechEdit } from "../../components/EditTechModal/index.jsx";
+import { Tech } from "../../context/techContext";
 
 export const PrincipalPage = () =>{
-    const { acount, userLogout } = useContext(EveryRotes);
-    console.log(acount)
+    const { acount, userLogout, setOpen, open } = useContext(EveryRotes);
+    const { open2} = useContext(Tech)
     return( 
         <>
-            <header className={ styles.header_page}>
-                <div>
-                    <h1>Kenzie Hub</h1>
-                    <button onClick={userLogout}>Sair</button>
+            {open? <ModalCreateTech /> : null}
+            {open2? <ModalTechEdit /> : null}
+            { acount ? 
+                <>
+                <header className={ styles.header_page}>
+                    <div>
+                        <h1>Kenzie Hub</h1>
+                        <button onClick={() =>{userLogout()}}>Sair</button>
+                    </div>
+                </header>
+                
+                <div className={ styles.div_page}>
+                    <div>
+                        <h1>olá, {acount.name}</h1>
+                        <span>{acount.course_module}</span>
+                    </div>
                 </div>
-            </header>
-            
-            <div className={ styles.div_page}>
-                <div>
-                    <h1>olá, {acount.name}</h1>
-                    <span>{acount.course_module}</span>
-                </div>
-            </div>
-            <main className={ styles.main_page}>
-                <div>
-                    <h2>Tecnologias</h2>
-                    <button>+</button>
-                </div>
-                <Outlet />
-            </main>
+                <main className={ styles.main_page}>
+                    <div>
+                        <h2>Tecnologias</h2>
+                        <button onClick={() => {setOpen(true)}}>+</button>
+                    </div>
+                    <Outlet />
+                </main> 
+                </>
+                : null
+            }
         </>
     )
 }
