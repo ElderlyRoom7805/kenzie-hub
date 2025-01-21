@@ -14,28 +14,30 @@ export const PrincipalPage = () =>{
             {open? <ModalCreateTech /> : null}
             {open2? <ModalTechEdit /> : null}
             { acount ? 
-                <>
-                <header className={ styles.header_page}>
-                    <div>
-                        <h1>Kenzie Hub</h1>
-                        <button onClick={() =>{userLogout()}}>Sair</button>
+                    <>
+                    <header className={ styles.header_page}>
+                        <div>
+                            <h1>Kenzie Hub</h1>
+                            <button onClick={() =>{userLogout()}}>Sair</button>
+                        </div>
+                    </header>
+                    
+                    <div className={ styles.div_page}>
+                        <div>
+                            <h1>olá, {acount.name}</h1>
+                            <span>{acount.course_module}</span>
+                        </div>
                     </div>
-                </header>
-                
-                <div className={ styles.div_page}>
-                    <div>
-                        <h1>olá, {acount.name}</h1>
-                        <span>{acount.course_module}</span>
-                    </div>
-                </div>
-                <main className={ styles.main_page}>
-                    <div>
-                        <h2>Tecnologias</h2>
-                        <button onClick={() => {setOpen(true)}}>+</button>
-                    </div>
-                    <Outlet />
-                </main> 
-                </>
+                    <main className={ styles.main_page}>
+                        <div className={styles.div_head_tech}>
+                            <h2>Tecnologias</h2>
+                            <button onClick={() => {setOpen(true)}}>+</button>
+                        </div>
+                        <div className={styles.div_tech}>
+                            <Outlet />
+                        </div>
+                    </main> 
+                    </>
                 : null
             }
         </>

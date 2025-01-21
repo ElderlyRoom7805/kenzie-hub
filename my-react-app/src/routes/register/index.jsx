@@ -69,34 +69,34 @@ export const Register = () => {
 
     return(
         <>
-            <header className={ styles.register_header}>
-                <h1>Kenzie Hub</h1>
-                <button onClick={returnButton}>Sair</button>
-            </header>
+                <header className={ styles.register_header}>
+                    <h1>Kenzie Hub</h1>
+                    <button onClick={returnButton}>Voltar</button>
+                </header>
 
-            <main className={ styles.register_main}>
-                <h2>Crie sua conta</h2>
-                <span>Rapido e grátis, vamos nessa</span>
-                <form onSubmit={handleSubmit(submit)}>
-                    {inputs.map(e =>{
-                        return(
-                            <div key={e.id} className={styles.input_div}>
-                                <label htmlFor={e.label}>{ e.label }</label>
-                                <input required type={e.type} {...register(e.form)} id={e.label} placeholder={ e.placeHolder }/>
-                            </div>
-                        )
-                    })}
-                    <label htmlFor="modulo">Módulo</label>
-                    <select name="mod" id="modulo" {...register("course_module")}>
-                        <option disabled >Selecione aqui</option>
-                        <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro Módulo </option>
-                        <option value="Segundo módulo (Frontend Avançado)">Segundo Módulo </option>
-                        <option value="Terceiro módulo (Introdução ao Backend)">Terceiro Módulo </option>
-                        <option value="Quarto módulo (Backend Avançado)">Quarto Módulo </option>
-                    </select>
-                    <button type="submit">Cadastrar</button>
-                </form>
-            </main>
+                <main className={ styles.register_main}>
+                    <h2>Crie sua conta</h2>
+                    <span>Rapido e grátis, vamos nessa</span>
+                    <form onSubmit={handleSubmit(submit)}>
+                        {inputs.map(e =>{
+                            return(
+                                <div key={e.id} className={styles.input_div}>
+                                    <label htmlFor={e.label}>{ e.label }</label>
+                                    <input required type={e.type} {...register(e.form)} id={e.label} placeholder={ e.placeHolder }/>
+                                </div>
+                            )
+                        })}
+                        <label htmlFor="modulo">Módulo</label>
+                        <select name="mod" id="modulo" {...register("course_module")}>
+                            <option disabled >Selecione aqui</option>
+                            <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro Módulo </option>
+                            <option value="Segundo módulo (Frontend Avançado)">Segundo Módulo </option>
+                            <option value="Terceiro módulo (Introdução ao Backend)">Terceiro Módulo </option>
+                            <option value="Quarto módulo (Backend Avançado)">Quarto Módulo </option>
+                        </select>
+                        <button type="submit">Cadastrar</button>
+                    </form>
+                </main>
         </>
     )
 }

@@ -85,9 +85,9 @@ export const EveryProvider = ({children}) => {
             navigate("/")
         } catch (error) {
             if (error.response.status == 400) {
-                toast.error("A senha deve conter no mínimo 6 caracteres!");
+                toast.error("A senha não contém 6 caracteres!");
               } else {
-                toast.error("E-mail já cadastrado!");
+                toast.error("E-mail já está cadastrado!");
             }
         }
     }
@@ -100,7 +100,7 @@ export const EveryProvider = ({children}) => {
             setAcount(data.user);
             navigate("/page")
         } catch{
-            toast.error("E-mail ou senha incorretos!");
+            toast.error("E-mail ou senha errados!");
         }
 
     }

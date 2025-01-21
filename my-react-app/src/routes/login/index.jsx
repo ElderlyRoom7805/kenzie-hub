@@ -50,6 +50,7 @@ export const Login = () => {
                     <span>Ainda não possui uma conta?</span>
                     <button onClick={() => {navigate("/register")}}>Cadastre-se</button>
             </main>
+
         </>
     )
 }
